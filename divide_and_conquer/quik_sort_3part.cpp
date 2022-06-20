@@ -19,6 +19,14 @@ int partition2(vector<int> &a, int l, int r) {
   return j;
 }
 
+//    l                                      r
+// A |________________________________________|
+//          
+//           (m1,2)<-partition3(A,l,r)
+//                     
+//    l                                      r
+// A |_____<x_____|___=x___|_______>x_________|
+//
 std::pair<int,int> partition3(vector<int> &a, int l, int r) {
   int x = a[l];
   int m2 = l;
@@ -47,7 +55,7 @@ void randomized_quick_sort(vector<int> &a, int l, int r) {
   }
 
   int k = l + rand() % (r - l + 1);
- // swap(a[l], a[k]);
+  swap(a[l], a[k]);
   auto m = partition3(a, l, r);
 
   randomized_quick_sort(a, l, m.first - 1);
